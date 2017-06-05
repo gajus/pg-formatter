@@ -58,7 +58,7 @@
   },
   "scripts": {
     "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files --source-maps",
-    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -L http://github.com/darold/pgFormatter/zipball/master/ | bsdtar -xvf - --strip-components=1 -C ./src/pg-formatter",
+    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs http://github.com/darold/pgFormatter/tarball/master/ | tar xz --strip-components=1 -C ./src/pg-formatter",
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },
