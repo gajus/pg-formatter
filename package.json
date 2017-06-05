@@ -62,7 +62,7 @@
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "command-line-args": "^4.0.6"
   }
