@@ -38,7 +38,7 @@
     "sql"
   ],
   "main": "./dist/Aci.js",
-  "name": "aci",
+  "name": "pg-formatter",
   "nyc": {
     "include": [
       "src/**/*.js"
