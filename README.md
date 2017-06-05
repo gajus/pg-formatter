@@ -9,7 +9,8 @@
 A PostgreSQL SQL syntax beautifier.
 
 > Note:
-> This project is a thin wrapper of a https://github.com/darold/pgFormatter.
+>
+> This project is a thin wrapper of https://github.com/darold/pgFormatter.
 > Execution of the module relies on Perl being available on the host system.
 
 ## Usage
