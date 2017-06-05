@@ -37,7 +37,7 @@
     "postgres",
     "sql"
   ],
-  "main": "./dist/Aci.js",
+  "main": "./dist/index.js",
   "name": "pg-formatter",
   "nyc": {
     "include": [
