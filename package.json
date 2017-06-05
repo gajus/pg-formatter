@@ -1,0 +1,69 @@
+{
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "description": "PostgreSQL SQL syntax beautifier.",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-transform-flow-comments": "^6.22.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-register": "^6.24.1",
+    "coveralls": "^2.13.1",
+    "eslint": "^3.19.0",
+    "eslint-config-canonical": "^8.2.1",
+    "flow-bin": "^0.47.0",
+    "husky": "^0.13.4",
+    "nyc": "^11.0.2",
+    "semantic-release": "^6.3.6"
+  },
+  "engines": {
+    "node": ">=8.0"
+  },
+  "keywords": [
+    "beautifier",
+    "formatter",
+    "postgres",
+    "sql"
+  ],
+  "main": "./dist/Aci.js",
+  "name": "aci",
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "instrument": false,
+    "reporter": [
+      "text-lcov"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gajus/pg-formatter.git"
+  },
+  "scripts": {
+    "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files --source-maps",
+    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -L http://github.com/darold/pgFormatter/zipball/master/ | bsdtar -xvf - --strip-components=1 -C ./src/pg-formatter",
+    "lint": "eslint ./src ./test && flow",
+    "test": "ava --serial --verbose"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "command-line-args": "^4.0.6"
+  }
+}
