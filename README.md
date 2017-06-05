@@ -26,7 +26,7 @@ format(`SELECT foo FROM bar`);
 ## Configuration
 
 |Configuration|Default|Description|`pgFormatter` equivalent|
-|---|---|---|
+|---|---|---|---|
 |`anonymize`|`false`|Obscure all literals in queries, useful to hide confidential data before formatting.|`anonymize`|
 |`functionCase`|`unchanged`|Change the case of the function names. Values: "unchanged", "lowercase", "uppercase", "capitalize"|`function-case`|
 |`keywordCase`|`unchanged`|Change the case of the reserved keyword. Values: "unchanged", "lowercase", "uppercase", "capitalize"|`keyword-case`|
