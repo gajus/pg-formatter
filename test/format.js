@@ -36,38 +36,37 @@ test('{stripComments: true} inline comment', (t) => {
   t.true(result === 'SELECT\n');
 });
 
-// @see https://github.com/darold/pgFormatter/issues/30
-// test('{functionCase: unchanged}', (t) => {
-//   const result = format('SELECT tEsT()', {
-//     functionCase: 'unchanged'
-//   });
-//
-//   t.true(result === 'SELECT tEsT()\n');
-// });
-//
-// test('{functionCase: uppercase}', (t) => {
-//   const result = format('sElEcT', {
-//     functionCase: 'uppercase'
-//   });
-//
-//   t.true(result === 'SELECT\n');
-// });
-//
-// test('{functionCase: lowercase}', (t) => {
-//   const result = format('sElEcT', {
-//     functionCase: 'lowercase'
-//   });
-//
-//   t.true(result === 'select\n');
-// });
-//
-// test('{functionCase: capitalize}', (t) => {
-//   const result = format('sElEcT', {
-//     functionCase: 'capitalize'
-//   });
-//
-//   t.true(result === 'Select\n');
-// });
+test('{functionCase: unchanged}', (t) => {
+  const result = format('lOwEr()', {
+    functionCase: 'unchanged'
+  });
+
+  t.true(result === 'lOwEr()\n');
+});
+
+test('{functionCase: uppercase}', (t) => {
+  const result = format('lOwEr()', {
+    functionCase: 'uppercase'
+  });
+
+  t.true(result === 'LOWER()\n');
+});
+
+test('{functionCase: lowercase}', (t) => {
+  const result = format('lOwEr()', {
+    functionCase: 'lowercase'
+  });
+
+  t.true(result === 'lower()\n');
+});
+
+test('{functionCase: capitalize}', (t) => {
+  const result = format('lOwEr()', {
+    functionCase: 'capitalize'
+  });
+
+  t.true(result === 'Lower()\n');
+});
 
 test('{keywordCase: unchanged}', (t) => {
   const result = format('sElEcT', {
