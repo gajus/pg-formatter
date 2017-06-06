@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - 8
   - 4
+before_install:
+  - npm config set depth 0
+  - npm install --global npm@latest
 script:
   - npm run build-pg-formatter
   - npm run lint
