@@ -32,4 +32,4 @@ format(`SELECT foo FROM bar`);
 |`functionCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the function names.|`function-case`|
 |`keywordCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the reserved keyword.|`keyword-case`|
 |`spaces`|number|`4`|Number of spaces to indent the code.|`spaces`|
-|`stripComments`|`false`|Remove any comment from SQL code.|`nocomment`|
+|`stripComments`|boolean|`false`|Remove any comment from SQL code.|`nocomment`|
