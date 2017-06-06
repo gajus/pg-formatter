@@ -29,7 +29,7 @@
     "semantic-release": "^6.3.6"
   },
   "engines": {
-    "node": ">=8.0"
+    "node": ">=4.0"
   },
   "keywords": [
     "beautifier",

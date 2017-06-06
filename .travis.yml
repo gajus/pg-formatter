@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - 8
+  - 4
 script:
   - npm run build-pg-formatter
   - npm run lint
