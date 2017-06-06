@@ -26,10 +26,10 @@ format(`SELECT foo FROM bar`);
 
 ## Configuration
 
-|Configuration|Default|Description|`pgFormatter` equivalent|
+|Configuration|Format|Default|Description|`pgFormatter` equivalent|
 |---|---|---|---|
-|`anonymize`|`false`|Obscure all literals in queries, useful to hide confidential data before formatting.|`anonymize`|
-|`functionCase`|`unchanged`|Change the case of the function names. Values: "unchanged", "lowercase", "uppercase", "capitalize"|`function-case`|
-|`keywordCase`|`unchanged`|Change the case of the reserved keyword. Values: "unchanged", "lowercase", "uppercase", "capitalize"|`keyword-case`|
-|`spaces`|`4`|Number of spaces to indent the code.|`spaces`|
+|`anonymize`|boolean|`false`|Obscure all literals in queries, useful to hide confidential data before formatting.|`anonymize`|
+|`functionCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the function names.|`function-case`|
+|`keywordCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the reserved keyword.|`keyword-case`|
+|`spaces`|number|`4`|Number of spaces to indent the code.|`spaces`|
 |`stripComments`|`false`|Remove any comment from SQL code.|`nocomment`|
