@@ -107,3 +107,11 @@ test('{spaces: 2}', (t) => {
 
   t.true(result === 'SELECT\n  1\n');
 });
+
+test('{placeholder: <<(?:.*)?>>}', (t) => {
+  const result = format('SELECT <<foo>>', {
+    placeholder: '<<(?:.*)?>>'
+  });
+
+  t.true(result === 'SELECT\n    <<foo>>\n');
+});

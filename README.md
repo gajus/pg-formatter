@@ -33,3 +33,4 @@ format(`SELECT foo FROM bar`);
 |`keywordCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the reserved keyword.|`keyword-case`|
 |`spaces`|number|`4`|Number of spaces to indent the code.|`spaces`|
 |`stripComments`|boolean|`false`|Remove any comment from SQL code.|`nocomment`|
+|`placeholder`|string (regex)|N/A|Regex to find code that must not be changed.|`placeholder`|

@@ -6,6 +6,9 @@ import {
 import {
   resolve
 } from 'path';
+import {
+  quote
+} from 'shell-quote';
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
 
@@ -13,6 +16,7 @@ type UserConfigurationType = {
   +anonymize?: boolean,
   +functionCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +placeholder?: string,
   +spaces?: number,
   +stripComments?: boolean
 };
@@ -21,6 +25,7 @@ type ConfigurationType = {
   +anonymize: boolean,
   +functionCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +placeholder?: string,
   +spaces: number,
   +stripComments: boolean
 };
@@ -58,6 +63,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
 
   if (configuration.keywordCase) {
     args.push('--keyword-case ' + keywordCaseOptionValueMap[configuration.keywordCase]);
+  }
+
+  if (configuration.placeholder) {
+    args.push('--placeholder ' + quote([configuration.placeholder]));
   }
 
   if (configuration.spaces) {
