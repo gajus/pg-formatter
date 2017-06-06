@@ -44,6 +44,26 @@ test('{functionCase: unchanged}', (t) => {
   t.true(result === 'lOwEr()\n');
 });
 
+// @see https://github.com/darold/pgFormatter/issues/30
+// eslint-disable-next-line ava/no-skip-test
+test.skip('{functionCase: unchanged} custom function', (t) => {
+  const result = format('concat_lower_or_upper()', {
+    functionCase: 'unchanged'
+  });
+
+  t.true(result === 'concat_lower_or_upper()\n');
+});
+
+// @see https://github.com/darold/pgFormatter/issues/30
+// eslint-disable-next-line ava/no-skip-test
+test.skip('{functionCase: unchanged} custom function with parameters', (t) => {
+  const result = format('concat_lower_or_upper(123)', {
+    functionCase: 'unchanged'
+  });
+
+  t.true(result === 'concat_lower_or_upper(123)\n');
+});
+
 test('{functionCase: uppercase}', (t) => {
   const result = format('lOwEr()', {
     functionCase: 'uppercase'
