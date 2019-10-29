@@ -5,31 +5,41 @@
     "url": "http://gajus.com"
   },
   "ava": {
-    "babel": "inherit",
+    "files": [
+      "test/**/*"
+    ],
+    "helpers": [
+      "test/helpers/**/*"
+    ],
     "require": [
-      "babel-register"
+      "@babel/register"
+    ],
+    "sources": [
+      "src/**/*"
     ]
+  },
+  "dependencies": {
+    "shell-quote": "^1.7.2"
   },
   "description": "PostgreSQL SQL syntax beautifier.",
   "devDependencies": {
-    "ava": "^0.19.1",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-istanbul": "^4.1.4",
-    "babel-plugin-transform-flow-comments": "^6.22.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.5.1",
-    "babel-register": "^6.24.1",
-    "coveralls": "^2.13.1",
-    "eslint": "^3.19.0",
-    "eslint-config-canonical": "^8.2.1",
-    "flow-bin": "^0.47.0",
-    "husky": "^0.13.4",
-    "nyc": "^11.0.2",
-    "semantic-release": "^6.3.6"
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-flow-strip-types": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "ava": "^2.4.0",
+    "babel-plugin-istanbul": "^5.2.0",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-config-canonical": "^17.7.0",
+    "flow-bin": "^0.110.1",
+    "husky": "^3.0.9",
+    "nyc": "^14.1.1",
+    "semantic-release": "^15.13.28"
   },
   "engines": {
-    "node": ">=4.0"
+    "node": ">=10.0"
   },
   "keywords": [
     "beautifier",
@@ -62,8 +72,5 @@
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },
-  "version": "1.0.1",
-  "dependencies": {
-    "shell-quote": "^1.6.1"
-  }
+  "version": "1.0.1"
 }

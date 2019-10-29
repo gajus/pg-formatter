@@ -1,34 +1,34 @@
 // @flow
 
 import {
-  execSync
+  execSync,
 } from 'child_process';
 import {
-  resolve
+  resolve,
 } from 'path';
 import {
-  quote
+  quote,
 } from 'shell-quote';
 
-const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
-
-type UserConfigurationType = {
+type UserConfigurationType = {|
   +anonymize?: boolean,
   +functionCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +placeholder?: string,
   +spaces?: number,
-  +stripComments?: boolean
-};
+  +stripComments?: boolean,
+|};
 
-type ConfigurationType = {
+type ConfigurationType = {|
   +anonymize: boolean,
   +functionCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +placeholder?: string,
   +spaces: number,
-  +stripComments: boolean
-};
+  +stripComments: boolean,
+|};
+
+const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
 
 const createConfiguration = (userConfiguration: UserConfigurationType = {}): ConfigurationType => {
   return {
@@ -37,7 +37,7 @@ const createConfiguration = (userConfiguration: UserConfigurationType = {}): Con
     keywordCase: 'unchanged',
     spaces: 4,
     stripComments: false,
-    ...userConfiguration
+    ...userConfiguration,
   };
 };
 
@@ -45,7 +45,7 @@ const functionCaseOptionValueMap = {
   capitalize: 3,
   lowercase: 1,
   unchanged: 0,
-  uppercase: 2
+  uppercase: 2,
 };
 
 const keywordCaseOptionValueMap = functionCaseOptionValueMap;
@@ -86,7 +86,7 @@ export default (sql: string, userConfiguration?: UserConfigurationType) => {
 
   const result = execSync('perl ' + executablePath + ' ' + args, {
     encoding: 'utf8',
-    input: sql
+    input: sql,
   });
 
   return result;

@@ -1,23 +1,19 @@
 language: node_js
 node_js:
-  - 8
-  - 4
-before_install:
-  - npm config set depth 0
-  - npm install --global npm@latest
+  - node
+  - 10
 script:
   - npm run build-pg-formatter
-  - npm run lint
+  - npm run build
   - npm run test
-  # - nyc --silent npm run test
-  # - nyc report --reporter=text-lcov | coveralls
-  # - nyc check-coverage --lines 90
+  - npm run lint
+  - NODE_ENV=test nyc --silent ava
+  - nyc report --reporter=text-lcov | coveralls
+  - nyc check-coverage --lines 50
 after_success:
   - npm run build-pg-formatter
-  - NODE_ENV=production npm run build
-  - semantic-release pre
-  - npm publish
-  - semantic-release post
+  - npm run build
+  - semantic-release
 notifications:
   email: false
 sudo: false

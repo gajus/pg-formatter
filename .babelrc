@@ -1,33 +1,22 @@
 {
   "env": {
-    "development": {
-      "plugins": [
-        "transform-object-rest-spread",
-        "transform-flow-comments"
-      ]
-    },
-    "production": {
-      "plugins": [
-        "transform-object-rest-spread",
-        "transform-flow-comments"
-      ]
-    },
     "test": {
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-flow-strip-types",
         "istanbul"
       ]
     }
   },
+  "plugins": [
+    "@babel/transform-flow-strip-types"
+  ],
   "presets": [
     [
-      "env",
+      "@babel/env",
       {
         "targets": {
-          "node": 4
+          "node": "10"
         },
-        "useBuiltIns": true
+        "useBuiltIns": false
       }
     ]
   ]

@@ -2,136 +2,136 @@
 
 import test from 'ava';
 import {
-  format
+  format,
 } from '../src';
 
 test('formats SQL', (t) => {
   const result = format('SELECT foo FROM bar');
 
-  t.true(result === 'SELECT\n    foo\nFROM\n    bar\n');
+  t.is(result, 'SELECT\n    foo\nFROM\n    bar\n');
 });
 
 test('{anonymize: true}', (t) => {
   const result = format('SELECT \'foo\' FROM \'bar\'', {
-    anonymize: true
+    anonymize: true,
   });
 
-  t.true(result !== 'SELECT\n    \'foo\'\nFROM\n    \'bar\'\n');
-  t.true(/SELECT\s+'[^']+'\s+FROM\s+'[^']+'/i.test(result));
+  t.not(result, 'SELECT\n    \'foo\'\nFROM\n    \'bar\'\n');
+  t.regex(result, /SELECT\s+'[^']+'\s+FROM\s+'[^']+'/i);
 });
 
 test('{stripComments: true} block comment', (t) => {
   const result = format('SELECT /* foo */', {
-    stripComments: true
+    stripComments: true,
   });
 
-  t.true(result === 'SELECT\n');
+  t.is(result, 'SELECT\n');
 });
 
 test('{stripComments: true} inline comment', (t) => {
   const result = format('SELECT -- foo', {
-    stripComments: true
+    stripComments: true,
   });
 
-  t.true(result === 'SELECT\n');
+  t.is(result, 'SELECT\n');
 });
 
 test('{functionCase: unchanged}', (t) => {
   const result = format('lOwEr()', {
-    functionCase: 'unchanged'
+    functionCase: 'unchanged',
   });
 
-  t.true(result === 'lOwEr()\n');
+  t.is(result, 'lOwEr()\n');
 });
 
 // @see https://github.com/darold/pgFormatter/issues/30
 // eslint-disable-next-line ava/no-skip-test
 test.skip('{functionCase: unchanged} custom function', (t) => {
   const result = format('concat_lower_or_upper()', {
-    functionCase: 'unchanged'
+    functionCase: 'unchanged',
   });
 
-  t.true(result === 'concat_lower_or_upper()\n');
+  t.is(result, 'concat_lower_or_upper()\n');
 });
 
 // @see https://github.com/darold/pgFormatter/issues/30
 // eslint-disable-next-line ava/no-skip-test
 test.skip('{functionCase: unchanged} custom function with parameters', (t) => {
   const result = format('concat_lower_or_upper(123)', {
-    functionCase: 'unchanged'
+    functionCase: 'unchanged',
   });
 
-  t.true(result === 'concat_lower_or_upper(123)\n');
+  t.is(result, 'concat_lower_or_upper(123)\n');
 });
 
 test('{functionCase: uppercase}', (t) => {
   const result = format('lOwEr()', {
-    functionCase: 'uppercase'
+    functionCase: 'uppercase',
   });
 
-  t.true(result === 'LOWER()\n');
+  t.is(result, 'LOWER()\n');
 });
 
 test('{functionCase: lowercase}', (t) => {
   const result = format('lOwEr()', {
-    functionCase: 'lowercase'
+    functionCase: 'lowercase',
   });
 
-  t.true(result === 'lower()\n');
+  t.is(result, 'lower()\n');
 });
 
 test('{functionCase: capitalize}', (t) => {
   const result = format('lOwEr()', {
-    functionCase: 'capitalize'
+    functionCase: 'capitalize',
   });
 
-  t.true(result === 'Lower()\n');
+  t.is(result, 'Lower()\n');
 });
 
 test('{keywordCase: unchanged}', (t) => {
   const result = format('sElEcT', {
-    keywordCase: 'unchanged'
+    keywordCase: 'unchanged',
   });
 
-  t.true(result === 'sElEcT\n');
+  t.is(result, 'sElEcT\n');
 });
 
 test('{keywordCase: uppercase}', (t) => {
   const result = format('sElEcT', {
-    keywordCase: 'uppercase'
+    keywordCase: 'uppercase',
   });
 
-  t.true(result === 'SELECT\n');
+  t.is(result, 'SELECT\n');
 });
 
 test('{keywordCase: lowercase}', (t) => {
   const result = format('sElEcT', {
-    keywordCase: 'lowercase'
+    keywordCase: 'lowercase',
   });
 
-  t.true(result === 'select\n');
+  t.is(result, 'select\n');
 });
 
 test('{keywordCase: capitalize}', (t) => {
   const result = format('sElEcT', {
-    keywordCase: 'capitalize'
+    keywordCase: 'capitalize',
   });
 
-  t.true(result === 'Select\n');
+  t.is(result, 'Select\n');
 });
 
 test('{spaces: 2}', (t) => {
   const result = format('SELECT 1', {
-    spaces: 2
+    spaces: 2,
   });
 
-  t.true(result === 'SELECT\n  1\n');
+  t.is(result, 'SELECT\n  1\n');
 });
 
 test('{placeholder: <<(?:.*)?>>}', (t) => {
   const result = format('SELECT <<foo>>', {
-    placeholder: '<<(?:.*)?>>'
+    placeholder: '<<(?:.*)?>>',
   });
 
-  t.true(result === 'SELECT\n    <<foo>>\n');
+  t.is(result, 'SELECT\n    <<foo>>\n');
 });
