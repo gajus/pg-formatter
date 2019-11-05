@@ -30,13 +30,18 @@ type ConfigurationType = {|
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
 
-const createConfiguration = (userConfiguration: UserConfigurationType = {}): ConfigurationType => {
+const defaultConfiguration = {
+  anonymize: false,
+  functionCase: 'unchanged',
+  keywordCase: 'unchanged',
+  spaces: 4,
+  stripComments: false,
+};
+
+const createConfiguration = (userConfiguration: UserConfigurationType = defaultConfiguration): ConfigurationType => {
+  // $FlowFixMe
   return {
-    anonymize: false,
-    functionCase: 'unchanged',
-    keywordCase: 'unchanged',
-    spaces: 4,
-    stripComments: false,
+    ...defaultConfiguration,
     ...userConfiguration,
   };
 };
