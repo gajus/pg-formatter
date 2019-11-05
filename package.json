@@ -58,7 +58,7 @@
       "text-lcov"
     ],
     "require": [
-      "babel-register"
+      "@babel/register"
     ],
     "sourceMap": false
   },
