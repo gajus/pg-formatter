@@ -72,5 +72,6 @@
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },
-  "version": "1.0.1"
+  "version": "1.0.1",
+  "license": "BSD-3-Clause"
 }
