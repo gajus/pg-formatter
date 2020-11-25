@@ -17,7 +17,7 @@ test('{anonymize: true}', (t) => {
   });
 
   t.not(result, 'SELECT\n    \'foo\'\nFROM\n    \'bar\'\n');
-  t.regex(result, /SELECT\s+'[^']+'\s+FROM\s+'[^']+'/i);
+  t.regex(result, /select\s+'[^']+'\s+from\s+'[^']+'/i);
 });
 
 test('{stripComments: true} block comment', (t) => {
