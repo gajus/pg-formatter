@@ -31,6 +31,7 @@ format(`SELECT foo FROM bar`);
 |`anonymize`|boolean|`false`|Obscure all literals in queries, useful to hide confidential data before formatting.|`anonymize`|
 |`functionCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the function names.|`function-case`|
 |`keywordCase`|string ("unchanged", "lowercase", "uppercase", "capitalize")|`unchanged`|Change the case of the reserved keyword.|`keyword-case`|
+|`noRcFile`|boolean|`false`|Do not read ~/.pg_format automatically.|`no-rcfile`|
 |`placeholder`|string (regex)|N/A|Regex to find code that must not be changed.|`placeholder`|
 |`spaces`|number|`4`|Number of spaces to indent the code.|`spaces`|
 |`stripComments`|boolean|`false`|Remove any comment from SQL code.|`nocomment`|

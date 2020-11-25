@@ -14,6 +14,7 @@ type UserConfigurationType = {|
   +anonymize?: boolean,
   +functionCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +noRcFile?: boolean,
   +placeholder?: string,
   +spaces?: number,
   +stripComments?: boolean,
@@ -24,6 +25,7 @@ type ConfigurationType = {|
   +anonymize: boolean,
   +functionCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +noRcFile: boolean,
   +placeholder?: string,
   +spaces: number,
   +stripComments: boolean,
@@ -36,6 +38,7 @@ const defaultConfiguration = {
   anonymize: false,
   functionCase: 'unchanged',
   keywordCase: 'unchanged',
+  noRcFile: false,
   spaces: 4,
   stripComments: false,
   tabs: false,
@@ -71,6 +74,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
 
   if (configuration.keywordCase) {
     args.push('--keyword-case ' + keywordCaseOptionValueMap[configuration.keywordCase]);
+  }
+
+  if (configuration.noRcFile) {
+    args.push('--no-rcfile');
   }
 
   if (configuration.placeholder) {

@@ -143,3 +143,20 @@ test('{placeholder: <<(?:.*)?>>}', (t) => {
 
   t.is(result, 'SELECT\n    <<foo>>\n');
 });
+
+test('{noRcFile: true}', (t) => {
+  /* eslint-disable no-process-env, fp/no-delete */
+  // pgFormatter tries to read from a default location $HOME/.pg_format, which
+  // will error of HOME is not set. noRcFile prevents pgFormatter from reading
+  // the file, so the following should run successfully.
+  const home = process.env.HOME;
+  try {
+    delete process.env.HOME;
+    format('SELECT 1', {
+      noRcFile: true,
+    });
+    t.pass();
+  } finally {
+    process.env.HOME = home;
+  }
+});
