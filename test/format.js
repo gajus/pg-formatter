@@ -128,6 +128,14 @@ test('{spaces: 2}', (t) => {
   t.is(result, 'SELECT\n  1\n');
 });
 
+test('{tabs: true}', (t) => {
+  const result = format('SELECT 1', {
+    tabs: true,
+  });
+
+  t.is(result, 'SELECT\n\t1\n');
+});
+
 test('{placeholder: <<(?:.*)?>>}', (t) => {
   const result = format('SELECT <<foo>>', {
     placeholder: '<<(?:.*)?>>',

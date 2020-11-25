@@ -17,6 +17,7 @@ type UserConfigurationType = {|
   +placeholder?: string,
   +spaces?: number,
   +stripComments?: boolean,
+  +tabs?: boolean,
 |};
 
 type ConfigurationType = {|
@@ -26,6 +27,7 @@ type ConfigurationType = {|
   +placeholder?: string,
   +spaces: number,
   +stripComments: boolean,
+  +tabs: boolean,
 |};
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
@@ -36,6 +38,7 @@ const defaultConfiguration = {
   keywordCase: 'unchanged',
   spaces: 4,
   stripComments: false,
+  tabs: false,
 };
 
 const createConfiguration = (userConfiguration: UserConfigurationType = defaultConfiguration): ConfigurationType => {
@@ -80,6 +83,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
 
   if (configuration.stripComments) {
     args.push('--nocomment');
+  }
+
+  if (configuration.tabs) {
+    args.push('--tabs');
   }
 
   return args.join(' ');
