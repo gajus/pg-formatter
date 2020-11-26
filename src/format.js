@@ -14,18 +14,22 @@ type UserConfigurationType = {|
   +anonymize?: boolean,
   +functionCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase?: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +noRcFile?: boolean,
   +placeholder?: string,
   +spaces?: number,
   +stripComments?: boolean,
+  +tabs?: boolean,
 |};
 
 type ConfigurationType = {|
   +anonymize: boolean,
   +functionCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
   +keywordCase: 'unchanged' | 'lowercase' | 'uppercase' | 'capitalize',
+  +noRcFile: boolean,
   +placeholder?: string,
   +spaces: number,
   +stripComments: boolean,
+  +tabs: boolean,
 |};
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
@@ -34,8 +38,10 @@ const defaultConfiguration = {
   anonymize: false,
   functionCase: 'unchanged',
   keywordCase: 'unchanged',
+  noRcFile: false,
   spaces: 4,
   stripComments: false,
+  tabs: false,
 };
 
 const createConfiguration = (userConfiguration: UserConfigurationType = defaultConfiguration): ConfigurationType => {
@@ -70,6 +76,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
     args.push('--keyword-case ' + keywordCaseOptionValueMap[configuration.keywordCase]);
   }
 
+  if (configuration.noRcFile) {
+    args.push('--no-rcfile');
+  }
+
   if (configuration.placeholder) {
     args.push('--placeholder ' + quote([configuration.placeholder]));
   }
@@ -80,6 +90,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
 
   if (configuration.stripComments) {
     args.push('--nocomment');
+  }
+
+  if (configuration.tabs) {
+    args.push('--tabs');
   }
 
   return args.join(' ');

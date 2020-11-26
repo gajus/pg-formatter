@@ -17,7 +17,7 @@ test('{anonymize: true}', (t) => {
   });
 
   t.not(result, 'SELECT\n    \'foo\'\nFROM\n    \'bar\'\n');
-  t.regex(result, /SELECT\s+'[^']+'\s+FROM\s+'[^']+'/i);
+  t.regex(result, /select\s+'[^']+'\s+from\s+'[^']+'/i);
 });
 
 test('{stripComments: true} block comment', (t) => {
@@ -128,10 +128,35 @@ test('{spaces: 2}', (t) => {
   t.is(result, 'SELECT\n  1\n');
 });
 
+test('{tabs: true}', (t) => {
+  const result = format('SELECT 1', {
+    tabs: true,
+  });
+
+  t.is(result, 'SELECT\n\t1\n');
+});
+
 test('{placeholder: <<(?:.*)?>>}', (t) => {
   const result = format('SELECT <<foo>>', {
     placeholder: '<<(?:.*)?>>',
   });
 
   t.is(result, 'SELECT\n    <<foo>>\n');
+});
+
+test('{noRcFile: true}', (t) => {
+  /* eslint-disable no-process-env, fp/no-delete */
+  // pgFormatter tries to read from a default location $HOME/.pg_format, which
+  // will error of HOME is not set. noRcFile prevents pgFormatter from reading
+  // the file, so the following should run successfully.
+  const home = process.env.HOME;
+  try {
+    delete process.env.HOME;
+    format('SELECT 1', {
+      noRcFile: true,
+    });
+    t.pass();
+  } finally {
+    process.env.HOME = home;
+  }
 });
