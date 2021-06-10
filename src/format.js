@@ -19,6 +19,7 @@ type UserConfigurationType = {|
   +spaces?: number,
   +stripComments?: boolean,
   +tabs?: boolean,
+  +commaBreak?: boolean,
 |};
 
 type ConfigurationType = {|
@@ -30,6 +31,7 @@ type ConfigurationType = {|
   +spaces: number,
   +stripComments: boolean,
   +tabs: boolean,
+  +commaBreak?: boolean,
 |};
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
@@ -94,6 +96,10 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
 
   if (configuration.tabs) {
     args.push('--tabs');
+  }
+
+  if (configuration.commaBreak) {
+    args.push('--comma-break');
   }
 
   return args.join(' ');

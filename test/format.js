@@ -160,3 +160,11 @@ test('{noRcFile: true}', (t) => {
     process.env.HOME = home;
   }
 });
+
+test('{commaBreak: true}', (t) => {
+  const result = format('INSERT INTO shoes(type, color, price) VALUES ("sneaker", "white", 99)', {
+    commaBreak: true,
+  });
+
+  t.is(result, 'INSERT INTO shoes (\n    type,\n    color,\n    price)\nVALUES (\n    "sneaker",\n    "white",\n    99)\n');
+});
