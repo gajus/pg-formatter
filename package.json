@@ -18,8 +18,12 @@
       "src/**/*"
     ]
   },
+  "bin": {
+    "pg-formatter": "dist/bin/index.js"
+  },
   "dependencies": {
-    "shell-quote": "^1.7.2"
+    "shell-quote": "^1.7.2",
+    "yargs": "^17.2.1"
   },
   "description": "PostgreSQL SQL syntax beautifier.",
   "devDependencies": {
