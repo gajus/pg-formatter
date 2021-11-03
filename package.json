@@ -18,8 +18,12 @@
       "src/**/*"
     ]
   },
+  "bin": {
+    "pg-formatter": "dist/bin/index.js"
+  },
   "dependencies": {
-    "shell-quote": "^1.7.2"
+    "shell-quote": "^1.7.2",
+    "yargs": "^17.2.1"
   },
   "description": "PostgreSQL SQL syntax beautifier.",
   "devDependencies": {
@@ -68,7 +72,7 @@
   },
   "scripts": {
     "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files --source-maps",
-    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs http://github.com/darold/pgFormatter/tarball/master/ | tar xz --strip-components=1 -C ./src/pg-formatter",
+    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v4.4.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter",
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },

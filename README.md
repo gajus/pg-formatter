@@ -36,3 +36,37 @@ format(`SELECT foo FROM bar`);
 |`spaces`|number|`4`|Number of spaces to indent the code.|`spaces`|
 |`stripComments`|boolean|`false`|Remove any comment from SQL code.|`nocomment`|
 |`tabs`|boolean|`false`|Use tabs instead of spaces. When `true`, the `spaces` option is ignored.|`tabs`|
+
+## CLI Usage
+
+```bash
+$ npm install pg-formatter -g
+$ pg-formatter --help
+Formats SQL files
+
+Options:
+      --version         Show version number                            [boolean]
+      --anonymize       Obscure all literals in queries, useful to hide
+                        confidential data before formatting.
+                                                      [boolean] [default: false]
+      --comma-break     Add a newline after each comma in an insert statement.
+                                                      [boolean] [default: false]
+      --function-case   Change the case of the function names.
+         [string] [choices: "unchanged", "lowercase", "uppercase", "capitalize"]
+                                                          [default: "unchanged"]
+  -i, --inplace         Override input file with formatted content.
+                                                      [boolean] [default: false]
+      --keyword-case    Change the case of the reserved keyword.
+         [string] [choices: "unchanged", "lowercase", "uppercase", "capitalize"]
+                                                          [default: "unchanged"]
+      --no-rc-file      Do not read ~/.pg_format automatically.
+                                                      [boolean] [default: false]
+      --placeholder     Regex to find code that must not be changed.    [string]
+      --spaces          Number of spaces to indent the code.
+                                                           [number] [default: 4]
+      --strip-comments  Remove any comment from SQL code.
+                                                      [boolean] [default: false]
+      --tabs            Use tabs instead of spaces. When true, the spaces option
+                        is ignored.                   [boolean] [default: false]
+      --help            Show help                                      [boolean]
+```
