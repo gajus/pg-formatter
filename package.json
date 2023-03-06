@@ -72,10 +72,10 @@
   },
   "scripts": {
     "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files --source-maps",
-    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v4.4.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter",
+    "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter",
     "lint": "eslint ./src ./test && flow",
     "test": "ava --serial --verbose"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "BSD-3-Clause"
 }
