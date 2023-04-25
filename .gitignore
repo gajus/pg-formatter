@@ -9,6 +9,6 @@ src/pg-formatter
 !.eslintignore
 !.eslintrc
 !.flowconfig
+!.github
 !.gitignore
 !.npmignore
-!.travis.yml
