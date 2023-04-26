@@ -7,3 +7,4 @@ src/pg-formatter
 !.eslintrc.js
 !.github
 !.gitignore
+!.husky
