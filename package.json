@@ -37,7 +37,7 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">=10.0"
+    "node": ">=16"
   },
   "files": [
     "dist"
