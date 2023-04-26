@@ -8,3 +8,4 @@ src/pg-formatter
 !.github
 !.gitignore
 !.husky
+!.releaserc
