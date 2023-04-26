@@ -27,6 +27,7 @@
     "ava": "^2.4.0",
     "babel-plugin-istanbul": "^5.2.0",
     "coveralls": "^3.0.7",
+    "cspell": "^6.31.1",
     "eslint": "^8.39.0",
     "eslint-config-canonical": "^41.0.3",
     "husky": "^3.0.9",
@@ -68,12 +69,13 @@
     "url": "git@github.com:gajus/pg-formatter.git"
   },
   "scripts": {
-    "build": "rm -fr ./dist && tsc --project tsconfig.build.json",
     "build-pg-formatter": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v4.4.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter",
+    "build": "rm -fr ./dist && tsc --project tsconfig.build.json",
+    "lint:cspell": "cspell './**/*.{ts,tsx}' --no-progress --gitignore",
     "lint:eslint": "eslint ./src ./test",
     "lint:flow": "tsc",
     "test:ava": "ava --serial --verbose"
   },
   "types": "./dist/index.d.ts",
-  "version": "1.0.1"
+  "version": "1.0.0"
 }
