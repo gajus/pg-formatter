@@ -15,7 +15,7 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run lint:eslint
-      - run: npm run lint:flow
+      - run: npm run lint:tsc
     timeout-minutes: 10
   test:
     environment: release

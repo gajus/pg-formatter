@@ -4,11 +4,6 @@ node_modules
 src/pg-formatter
 *.log
 .*
-!.babelrc
-!.editorconfig
-!.eslintignore
-!.eslintrc
-!.flowconfig
+!.eslintrc.js
 !.github
 !.gitignore
-!.npmignore

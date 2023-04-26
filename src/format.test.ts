@@ -1,9 +1,7 @@
-// @flow
+/* eslint-disable node/no-process-env */
 
+import { format } from './format';
 import test from 'ava';
-import {
-  format,
-} from '../src';
 
 test('formats SQL', (t) => {
   const result = format('SELECT foo FROM bar');
@@ -12,12 +10,12 @@ test('formats SQL', (t) => {
 });
 
 test('{anonymize: true}', (t) => {
-  const result = format('SELECT \'foo\' FROM \'bar\'', {
+  const result = format("SELECT 'foo' FROM 'bar'", {
     anonymize: true,
   });
 
-  t.not(result, 'SELECT\n    \'foo\'\nFROM\n    \'bar\'\n');
-  t.regex(result, /select\s+'[^']+'\s+from\s+'[^']+'/i);
+  t.not(result, "SELECT\n    'foo'\nFROM\n    'bar'\n");
+  t.regex(result, /select\s+'[^']+'\s+from\s+'[^']+'/iu);
 });
 
 test('{stripComments: true} block comment', (t) => {
@@ -145,7 +143,6 @@ test('{placeholder: <<(?:.*)?>>}', (t) => {
 });
 
 test('{noRcFile: true}', (t) => {
-  /* eslint-disable no-process-env, fp/no-delete */
   // pgFormatter tries to read from a default location $HOME/.pg_format, which
   // will error of HOME is not set. noRcFile prevents pgFormatter from reading
   // the file, so the following should run successfully.
@@ -162,9 +159,15 @@ test('{noRcFile: true}', (t) => {
 });
 
 test('{commaBreak: true}', (t) => {
-  const result = format('INSERT INTO shoes(type, color, price) VALUES ("sneaker", "white", 99)', {
-    commaBreak: true,
-  });
+  const result = format(
+    'INSERT INTO shoes(type, color, price) VALUES ("sneaker", "white", 99)',
+    {
+      commaBreak: true,
+    },
+  );
 
-  t.is(result, 'INSERT INTO shoes (\n    type,\n    color,\n    price)\nVALUES (\n    "sneaker",\n    "white",\n    99)\n');
+  t.is(
+    result,
+    'INSERT INTO shoes (\n    type,\n    color,\n    price)\nVALUES (\n    "sneaker",\n    "white",\n    99)\n',
+  );
 });

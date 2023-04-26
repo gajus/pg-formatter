@@ -1,15 +1,14 @@
-#!/usr/bin/env node
-
-import fs from 'fs';
+import { format } from '../format';
+import fs from 'node:fs';
 import yargs from 'yargs';
-import format from '../format';
 
 const argv = yargs
   .usage('Formats SQL files')
   .options({
     anonymize: {
       default: false,
-      description: 'Obscure all literals in queries, useful to hide confidential data before formatting.',
+      description:
+        'Obscure all literals in queries, useful to hide confidential data before formatting.',
       type: 'boolean',
     },
     'comma-break': {
@@ -56,7 +55,8 @@ const argv = yargs
     },
     tabs: {
       default: false,
-      description: 'Use tabs instead of spaces. When true, the spaces option is ignored.',
+      description:
+        'Use tabs instead of spaces. When true, the spaces option is ignored.',
       type: 'boolean',
     },
   })
@@ -78,15 +78,25 @@ if (files.length === 0) {
   throw new Error('No files given');
 }
 
-const options = ['anonymize', 'commaBreak', 'functionCase', 'keywordCase', 'noRcFile', 'placeholder', 'spaces', 'stripComments', 'tabs'];
+const options = [
+  'anonymize',
+  'commaBreak',
+  'functionCase',
+  'keywordCase',
+  'noRcFile',
+  'placeholder',
+  'spaces',
+  'stripComments',
+  'tabs',
+];
 const config = {};
 
 for (const option of options) {
   config[option] = argv[option];
 }
 
-files.forEach((file) => {
-  const data = fs.readFileSync(file);
+for (const file of files) {
+  const data = fs.readFileSync(file, 'utf8');
   const result = format(data, config);
 
   if (argv.inplace) {
@@ -94,4 +104,4 @@ files.forEach((file) => {
   } else {
     process.stdout.write(result);
   }
-});
+}
