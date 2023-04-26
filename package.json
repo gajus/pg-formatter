@@ -27,7 +27,7 @@
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
-    "ava": "^2.4.0",
+    "ava": "^5.2.0",
     "cspell": "^6.31.1",
     "eslint": "^8.39.0",
     "eslint-config-canonical": "^41.0.3",
