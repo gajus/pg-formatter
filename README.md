@@ -1,7 +1,5 @@
 # pg-formatter
 
-[![Travis build status](http://img.shields.io/travis/gajus/pg-formatter/master.svg?style=flat-square)](https://travis-ci.org/gajus/pg-formatter)
-[![Coveralls](https://img.shields.io/coveralls/gajus/pg-formatter.svg?style=flat-square)](https://coveralls.io/github/gajus/pg-formatter)
 [![NPM version](http://img.shields.io/npm/v/pg-formatter.svg?style=flat-square)](https://www.npmjs.org/package/pg-formatter)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kuizinas.svg?style=social&label=Follow)](https://twitter.com/kuizinas)
