@@ -40,6 +40,7 @@
     "node": ">=16"
   },
   "files": [
+    "src",
     "dist"
   ],
   "keywords": [
@@ -60,7 +61,7 @@
     "lint:cspell": "cspell './**/*.{ts,tsx}' --no-progress --gitignore",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc",
-    "postinstall": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter && npm run build && cp -R ./src/pg-formatter ./dist/pg-formatter",
+    "postinstall": "rm -fr ./src/pg-formatter && mkdir -p ./src/pg-formatter && curl -LkSs https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz | tar xz --strip-components=1 -C ./src/pg-formatter && cp -R ./src/pg-formatter ./dist/pg-formatter",
     "prepare": "husky install",
     "test:ava": "ava --serial --verbose"
   },
