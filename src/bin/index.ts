@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+/* eslint-disable node/shebang */
+
 import { format } from '../format';
 import fs from 'node:fs';
 import yargs from 'yargs';
