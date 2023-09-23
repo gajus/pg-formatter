@@ -43,7 +43,8 @@
   },
   "files": [
     "src",
-    "dist"
+    "dist",
+    "bin"
   ],
   "keywords": [
     "beautifier",
