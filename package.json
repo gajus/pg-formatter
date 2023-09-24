@@ -19,10 +19,10 @@
     "pg-formatter": "dist/bin/index.js"
   },
   "dependencies": {
-    "shell-quote": "^1.7.2",
-    "yargs": "^17.2.1",
     "rimraf": "^5.0.1",
-    "tar-fs": "^3.0.4"
+    "shell-quote": "^1.7.2",
+    "tar-fs": "^3.0.4",
+    "yargs": "^17.2.1"
   },
   "description": "PostgreSQL SQL syntax beautifier.",
   "devDependencies": {
