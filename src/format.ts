@@ -1,6 +1,5 @@
-import { execSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
-import { quote } from 'shell-quote';
 
 type FunctionCase = 'capitalize' | 'lowercase' | 'unchanged' | 'uppercase';
 type KeywordCase = 'capitalize' | 'lowercase' | 'unchanged' | 'uppercase';
@@ -59,24 +58,25 @@ const functionCaseOptionValueMap = {
 
 const keywordCaseOptionValueMap = functionCaseOptionValueMap;
 
-const createCommandLineArgs = (configuration: ConfigurationType): string => {
-  const args: string[] = [];
+const createCommandLineArgs = (configuration: ConfigurationType) => {
+  const args: Array<string[] | string> = [];
 
   if (configuration.anonymize) {
     args.push('--anonymize');
   }
 
   if (configuration.functionCase) {
-    args.push(
-      '--function-case ' +
-        functionCaseOptionValueMap[configuration.functionCase],
-    );
+    args.push([
+      '--function-case',
+      String(functionCaseOptionValueMap[configuration.functionCase]),
+    ]);
   }
 
   if (configuration.keywordCase) {
-    args.push(
-      '--keyword-case ' + keywordCaseOptionValueMap[configuration.keywordCase],
-    );
+    args.push([
+      '--keyword-case',
+      String(keywordCaseOptionValueMap[configuration.keywordCase]),
+    ]);
   }
 
   if (configuration.noRcFile) {
@@ -84,11 +84,11 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
   }
 
   if (configuration.placeholder) {
-    args.push('--placeholder ' + quote([configuration.placeholder]));
+    args.push(['--placeholder', configuration.placeholder]);
   }
 
   if (configuration.spaces) {
-    args.push('--spaces ' + configuration.spaces);
+    args.push(['--spaces', String(configuration.spaces)]);
   }
 
   if (configuration.stripComments) {
@@ -103,20 +103,31 @@ const createCommandLineArgs = (configuration: ConfigurationType): string => {
     args.push('--comma-break');
   }
 
-  return args.join(' ');
+  return args;
 };
 
 export const format = (
   sql: string,
   userConfiguration?: UserConfigurationType,
-) => {
+): string => {
   const configuration = createConfiguration(userConfiguration);
   const args = createCommandLineArgs(configuration);
 
-  const result = execSync('perl ' + executablePath + ' ' + args, {
-    encoding: 'utf8',
-    input: sql,
-  });
+  const { error, output } = spawnSync(
+    'perl',
+    [executablePath, ...args.flat()],
+    {
+      encoding: 'utf8',
+      env: {
+        LC_ALL: 'C.UTF-8',
+      },
+      input: sql,
+    },
+  );
 
-  return result;
+  if (error) {
+    throw error;
+  }
+
+  return output.join('');
 };
