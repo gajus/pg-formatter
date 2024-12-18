@@ -1,8 +1,8 @@
-const rimraf = require('rimraf');
 const fs = require('node:fs');
 const https = require('node:https');
-const zlib = require('node:zlib');
 const path = require('node:path');
+const zlib = require('node:zlib');
+const rimraf = require('rimraf');
 const tar = require('tar-fs');
 
 const destination = path.resolve(__dirname, '../src/pg-formatter');

@@ -1,7 +1,19 @@
 import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 
+type ConfigurationType = {
+  readonly anonymize: boolean;
+  readonly commaBreak?: boolean;
+  readonly functionCase: FunctionCase;
+  readonly keywordCase: KeywordCase;
+  readonly noRcFile: boolean;
+  readonly placeholder?: string;
+  readonly spaces: number;
+  readonly stripComments: boolean;
+  readonly tabs: boolean;
+};
 type FunctionCase = 'capitalize' | 'lowercase' | 'unchanged' | 'uppercase';
+
 type KeywordCase = 'capitalize' | 'lowercase' | 'unchanged' | 'uppercase';
 
 type UserConfigurationType = {
@@ -14,18 +26,6 @@ type UserConfigurationType = {
   readonly spaces?: number;
   readonly stripComments?: boolean;
   readonly tabs?: boolean;
-};
-
-type ConfigurationType = {
-  readonly anonymize: boolean;
-  readonly commaBreak?: boolean;
-  readonly functionCase: FunctionCase;
-  readonly keywordCase: KeywordCase;
-  readonly noRcFile: boolean;
-  readonly placeholder?: string;
-  readonly spaces: number;
-  readonly stripComments: boolean;
-  readonly tabs: boolean;
 };
 
 const executablePath = resolve(__dirname, 'pg-formatter/pg_format');
@@ -59,7 +59,7 @@ const functionCaseOptionValueMap = {
 const keywordCaseOptionValueMap = functionCaseOptionValueMap;
 
 const createCommandLineArgs = (configuration: ConfigurationType) => {
-  const args: Array<string[] | string> = [];
+  const args: Array<string | string[]> = [];
 
   if (configuration.anonymize) {
     args.push('--anonymize');

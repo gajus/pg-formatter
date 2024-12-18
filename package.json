@@ -19,23 +19,23 @@
     "pg-formatter": "dist/bin/index.js"
   },
   "dependencies": {
-    "rimraf": "^5.0.1",
-    "tar-fs": "^3.0.4",
-    "yargs": "^17.2.1"
+    "rimraf": "^6.0.1",
+    "tar-fs": "^3.0.6",
+    "yargs": "^17.7.2"
   },
   "description": "PostgreSQL SQL syntax beautifier.",
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
     "@semantic-release/npm": "^9.0.2",
-    "ava": "^2.4.0",
-    "cspell": "^6.31.1",
-    "eslint": "^8.39.0",
-    "eslint-config-canonical": "^41.0.3",
-    "husky": "^8.0.0",
-    "semantic-release": "^20.1.3",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "ava": "^6.2.0",
+    "cspell": "^8.17.1",
+    "eslint": "^9.17.0",
+    "eslint-config-canonical": "^44.3.36",
+    "husky": "^9.1.7",
+    "semantic-release": "^24.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   },
   "engines": {
     "node": ">=16"
@@ -63,7 +63,7 @@
     "lint:cspell": "cspell './**/*.{ts,tsx}' --no-progress --gitignore",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc",
-    "postinstall": "node ./bin/postinstall-script.js",
+    "postinstall": "node ./bin/postinstall-script.cjs",
     "prepare": "husky install",
     "test:ava": "ava --serial --verbose"
   },

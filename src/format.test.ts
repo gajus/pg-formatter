@@ -1,5 +1,3 @@
-/* eslint-disable node/no-process-env */
-
 import { format } from './format';
 import test from 'ava';
 
