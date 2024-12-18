@@ -118,9 +118,6 @@ export const format = (
     [executablePath, ...args.flat()],
     {
       encoding: 'utf8',
-      env: {
-        LC_ALL: 'C.UTF-8',
-      },
       input: sql,
     },
   );
