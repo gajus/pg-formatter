@@ -5,6 +5,9 @@ const zlib = require('node:zlib');
 const rimraf = require('rimraf');
 const tar = require('tar-fs');
 
+// skript takes 30s otherwise
+// https://github.com/nodejs/node/issues/47228 where the process also does not exit for 30 seconds.
+https.globalAgent.keepAlive = false;
 const destination = path.resolve(__dirname, '../src/pg-formatter');
 const secondaryDestination = path.resolve(__dirname, '../dist/pg-formatter');
 const libraryUrl = `https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz`;
