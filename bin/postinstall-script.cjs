@@ -7,7 +7,7 @@ const tar = require('tar-fs');
 
 const destination = path.resolve(__dirname, '../src/pg-formatter');
 const secondaryDestination = path.resolve(__dirname, '../dist/pg-formatter');
-const libraryUrl = `https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz`;
+const libraryUrl = `https://github.com/darold/pgFormatter/archive/refs/tags/v5.9.tar.gz`;
 
 rimraf.rimrafSync(destination);
 rimraf.rimrafSync(secondaryDestination);
