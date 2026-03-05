@@ -27,7 +27,7 @@
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/github": "^8.0.7",
-    "@semantic-release/npm": "^9.0.2",
+    "@semantic-release/npm": "^13.1.5",
     "ava": "^6.2.0",
     "cspell": "^8.17.1",
     "eslint": "^9.17.0",
