@@ -5,14 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: setup repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: setup node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v7
         with:
           cache: 'npm'
-          node-version: '20'
+          node-version: '24'
       - run: npm ci
       - run: npm run lint:cspell
       - run: npm run lint:eslint
