@@ -1,14 +1,14 @@
-const auto = require('eslint-config-canonical/configurations/auto');
-const ava = require('eslint-config-canonical/configurations/ava');
-const node = require('eslint-config-canonical/configurations/node');
+import auto from 'eslint-config-canonical/auto';
+import * as ava from 'eslint-config-canonical/ava';
+import * as node from 'eslint-config-canonical/node';
 
-module.exports = [
+export default [
   ...auto,
-  ava.recommended,
-  {
+  ...ava.recommended,
+  ...node.recommended.map((configuration) => ({
     files: ['**/*.cjs'],
-    ...node.recommended,
-  },
+    ...configuration,
+  })),
   {
     rules: {
       'no-template-curly-in-string': 0,
