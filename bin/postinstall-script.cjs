@@ -5,6 +5,11 @@ const zlib = require('node:zlib');
 const rimraf = require('rimraf');
 const tar = require('tar-fs');
 
+// Node.js 19+ enables keep-alive on the global agent, which keeps the process
+// from exiting for ~30 seconds after the download completes.
+// @see https://github.com/nodejs/node/issues/47228
+https.globalAgent.keepAlive = false;
+
 const destination = path.resolve(__dirname, '../src/pg-formatter');
 const secondaryDestination = path.resolve(__dirname, '../dist/pg-formatter');
 const libraryUrl = `https://github.com/darold/pgFormatter/archive/refs/tags/v5.5.tar.gz`;
